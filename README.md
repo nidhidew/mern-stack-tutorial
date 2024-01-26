@@ -21,3 +21,14 @@
 - after that create root file for navigating the frontend pages.
 - right now if we run `npm run dev` then we can start the server and access the frontend pages.
 
+## Chapter 2
+
+- so inthis we learn about the Middleware.
+- Middleware is 1 or more functions that are placed in the path of requests that are received by the backend API
+- Middleware can additional functionality for the api
+- it can also apply some preliminary process into requests before they get to the controller where the request processing will be completed
+- 3 types of middleware
+ * Built-in
+ * Custom
+ * 3rd party
+- 
