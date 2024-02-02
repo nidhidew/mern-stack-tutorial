@@ -39,3 +39,5 @@
 - so in this we learn about the MongoDB
 - mongodb is a nosql database built with collections of documents
 - here we will integrate mongodb into our rest api
+- have to install mongoose and create a account in mongodb
+- after that create a database and then follow the steps for connecting mongodb to over server
