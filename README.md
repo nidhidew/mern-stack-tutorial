@@ -31,3 +31,5 @@
  * Built-in
  * Custom
  * 3rd party
+
+- express.static is middleware from chapter 1
