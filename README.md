@@ -23,7 +23,7 @@
 
 ## Chapter 2
 
-- so inthis we learn about the Middleware.
+- so in this we learn about the Middleware.
 - Middleware is 1 or more functions that are placed in the path of requests that are received by the backend API
 - Middleware can additional functionality for the api
 - it can also apply some preliminary process into requests before they get to the controller where the request processing will be completed
@@ -33,3 +33,9 @@
  * 3rd party
 
 - express.static is middleware from chapter 1
+
+## Chapter 3
+
+- so in this we learn about the MongoDB
+- mongodb is a nosql database built with collections of documents
+- here we will integrate mongodb into our rest api
