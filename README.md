@@ -41,3 +41,16 @@
 - here we will integrate mongodb into our rest api
 - have to install mongoose and create a account in mongodb
 - after that create a database and then follow the steps for connecting mongodb to over server
+
+## Chapter 4
+
+- in this we are going to create controllers
+- in MERN project controllers are a part of the server-side architecture.
+- Controllers are responsible for handling incoming http request, processing the request , interacting with the database
+  and returning an appropriate http response
+- first we write some logics for get,post,patch and delete methods in controllers and set routes which will help to 
+    redirect to that request
+- connect those routes and controllers to the server 
+- then test/try those request 
+- for testing those endpoints we will use postman and start the mongodb website to active the ip address
+- now one by one use those endpoints
