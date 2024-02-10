@@ -58,3 +58,5 @@
 ## Chapter 5
 
 - in this we are going to create react project which is frontend part
+- setting up the react project with required components
+
