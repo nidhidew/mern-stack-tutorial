@@ -60,3 +60,114 @@
 - in this we are going to create react project which is frontend part
 - setting up the react project with required components
 
+## Chapter 6
+
+- in this we are integrating redux to manage state  of  application.
+- Redux and rtk query
+- Redux Toolkit (RTK) Query is a powerful tool that simplifies data fetching and caching in Redux applications. It provides a set of APIs to define and dispatch asynchronous data-fetching logic, as well as automatic caching and re-fetching of data.
+
+Here's a brief overview of how to use RTK Query with Redux:
+
+1. **Install Redux Toolkit:**
+   If you haven't already, install Redux Toolkit in your project:
+   ```bash
+   npm install @reduxjs/toolkit
+   ```
+
+2. **Setup Redux Store:**
+   Configure your Redux store using `configureStore` from Redux Toolkit and include the `api` reducer provided by RTK Query:
+   ```javascript
+   import { configureStore } from '@reduxjs/toolkit';
+   import { apiSlice } from './apiSlice';
+
+   const store = configureStore({
+     reducer: {
+       [apiSlice.reducerPath]: apiSlice.reducer,
+     },
+     // Middleware setup for RTK Query
+     middleware: (getDefaultMiddleware) =>
+       getDefaultMiddleware().concat(apiSlice.middleware),
+   });
+
+   export default store;
+   ```
+
+3. **Define an API Slice:**
+   Define an API slice using `createApi` from RTK Query. This defines your endpoints and their corresponding fetch functions:
+   ```javascript
+   import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+
+   const api = createApi({
+     reducerPath: 'api',
+     baseQuery: fetchBaseQuery({ baseUrl: 'https://your-api-url.com/' }),
+     endpoints: (builder) => ({
+       getUsers: builder.query({
+         query: () => 'users',
+       }),
+       // Define other endpoints here
+     }),
+   });
+
+   export const { useGetUsersQuery } = api;
+   export default api;
+   ```
+
+4. **Add API Slice to Store:**
+   Add the API slice reducer to your store configuration:
+   ```javascript
+   import { configureStore } from '@reduxjs/toolkit';
+   import api from './apiSlice';
+
+   const store = configureStore({
+     reducer: {
+       [api.reducerPath]: api.reducer,
+     },
+     middleware: (getDefaultMiddleware) =>
+       getDefaultMiddleware().concat(api.middleware),
+   });
+
+   export default store;
+   ```
+
+5. **Provide the Redux Store:**
+   Wrap your application with the `Provider` component from React Redux and pass your Redux store:
+   ```javascript
+   import React from 'react';
+   import ReactDOM from 'react-dom';
+   import { Provider } from 'react-redux';
+   import store from './app/store';
+   import App from './App';
+
+   ReactDOM.render(
+     <Provider store={store}>
+       <App />
+     </Provider>,
+     document.getElementById('root')
+   );
+   ```
+
+6. **Use the RTK Query Hooks:**
+   In your components, use the generated hooks from RTK Query to fetch data and access loading and error states:
+   ```javascript
+   import React from 'react';
+   import { useGetUsersQuery } from './apiSlice';
+
+   const UsersList = () => {
+     const { data, error, isLoading } = useGetUsersQuery();
+
+     if (isLoading) return <div>Loading...</div>;
+     if (error) return <div>Error: {error.message}</div>;
+
+     return (
+       <ul>
+         {data.map((user) => (
+           <li key={user.id}>{user.name}</li>
+         ))}
+       </ul>
+     );
+   };
+
+   export default UsersList;
+   ```
+
+With RTK Query, you can define your API endpoints and fetch data in a more declarative way, without the need for writing complex action creators or reducers. It also provides built-in caching and automatic refetching, making data management more efficient and scalable in Redux applications.
