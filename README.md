@@ -217,3 +217,40 @@ In this example, we define a `SimpleForm` component with two input fields for fi
 We then use the `reduxForm` higher-order component to wrap our `SimpleForm` component, providing a unique identifier (`form: 'simple'`) for this form. This creates a Redux-form-connected component that can be used in our application to manage form state.
 
 You can then render the `SimpleForm` component in your application and handle form submission using the Redux store to manage form state.
+
+## Chapter 8
+
+- here we learn about authentication and authorization
+- Authentication and authorization are two related but distinct concepts in the context of security and access control in software systems.
+
+1. **Authentication**:
+   - Authentication is the process of verifying the identity of a user or system.
+   - It ensures that the user or system is who or what it claims to be.
+   - Common authentication methods include:
+     - **Username and Password**: The user provides a username and a password, which are compared against a database of authorized users.
+     - **Token-based Authentication**: The user provides a token (e.g., JSON Web Token or JWT) that verifies their identity.
+     - **OAuth**: A protocol for token-based authentication that allows users to access resources on one site using their credentials from another site.
+   - Once authentication is successful, the user is considered authenticated and can access the system or resources.
+
+2. **Authorization**:
+   - Authorization is the process of determining whether a user or system is allowed to access a particular resource or perform a particular action.
+   - It is based on the identity established during authentication and the permissions associated with that identity.
+   - Authorization is often implemented using roles or permissions:
+     - **Roles**: A role defines a set of permissions that determine what actions a user can perform.
+     - **Permissions**: Permissions specify what actions are allowed or denied for a specific resource.
+   - Authorization ensures that users can only access the resources and perform the actions that they are allowed to based on their identity and permissions.
+
+In summary, authentication verifies the identity of a user or system, while authorization determines what resources and actions a user or system is allowed to access based on their identity and permissions. Both are crucial components of security and access control in software systems.
+
+JWT stands for JSON Web Token. It is a compact, URL-safe means of representing claims to be transferred between two parties. The claims in a JWT are encoded as a JSON object that is used as the payload of a JSON Web Signature (JWS) structure or as the plaintext of a JSON Web Encryption (JWE) structure, enabling the claims to be digitally signed or integrity protected with a Message Authentication Code (MAC) and/or encrypted.
+
+JWTs can be used to securely transmit information between parties as a JSON object. This information can be verified and trusted because it is digitally signed. JWTs are commonly used for authentication and information exchange in web development.
+
+A JWT typically consists of three parts separated by dots (e.g., `xxxxx.yyyyy.zzzzz`):
+
+1. **Header**: Contains metadata about the type of token and the signing algorithm being used.
+2. **Payload**: Contains the claims. Claims are statements about an entity (typically, the user) and additional data.
+3. **Signature**: Used to verify that the sender of the JWT is who it says it is and to ensure that the message wasn't changed along the way.
+
+JWTs are often used in authentication mechanisms. When a user logs in, the server generates a JWT and sends it back to the client. The client then includes this JWT in subsequent requests to access protected resources. The server can verify the JWT to ensure that the client is authenticated and determine the user's identity and permissions based on the JWT claims.
+
