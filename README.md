@@ -254,3 +254,8 @@ A JWT typically consists of three parts separated by dots (e.g., `xxxxx.yyyyy.zz
 
 JWTs are often used in authentication mechanisms. When a user logs in, the server generates a JWT and sends it back to the client. The client then includes this JWT in subsequent requests to access protected resources. The server can verify the JWT to ensure that the client is authenticated and determine the user's identity and permissions based on the JWT claims.
 
+## Chapter 9
+
+- login page is going to be created and it will work with backend and integrated with it.
+
+
