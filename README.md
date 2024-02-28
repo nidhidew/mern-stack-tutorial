@@ -62,7 +62,7 @@
 
 ## Chapter 6
 
-- in this we are integrating redux to manage state  of  application.
+- in this we are integrating redux to manage state of application.
 - Redux and rtk query
 - Redux Toolkit (RTK) Query is a powerful tool that simplifies data fetching and caching in Redux applications. It provides a set of APIs to define and dispatch asynchronous data-fetching logic, as well as automatic caching and re-fetching of data.
 
@@ -171,3 +171,49 @@ Here's a brief overview of how to use RTK Query with Redux:
    ```
 
 With RTK Query, you can define your API endpoints and fetch data in a more declarative way, without the need for writing complex action creators or reducers. It also provides built-in caching and automatic refetching, making data management more efficient and scalable in Redux applications.
+
+## Chapter 7
+
+- in this form is created using react and redux.
+
+React Redux Forms is a library that integrates React with Redux to manage form state in a Redux store. It provides a way to create forms in React components and connect them to the Redux store to manage form data and state changes.
+
+To use React Redux Forms, you typically define your form fields as components and use the `Field` component provided by React Redux Forms to connect them to the Redux store. This allows you to access and update form values through the Redux store, making it easier to manage form state across your application.
+
+Here's a basic example of how you might use React Redux Forms to create a simple form:
+
+```jsx
+import React from 'react';
+import { Field, reduxForm } from 'redux-form';
+
+// Define a form component
+let SimpleForm = props => {
+  const { handleSubmit } = props;
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="firstName">First Name</label>
+        <Field name="firstName" component="input" type="text" />
+      </div>
+      <div>
+        <label htmlFor="lastName">Last Name</label>
+        <Field name="lastName" component="input" type="text" />
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  );
+};
+
+// Decorate the form component to connect it to the Redux store
+SimpleForm = reduxForm({
+  form: 'simple' // a unique identifier for this form
+})(SimpleForm);
+
+export default SimpleForm;
+```
+
+In this example, we define a `SimpleForm` component with two input fields for first name and last name. We use the `Field` component to connect each input field to the Redux store, specifying the `name` prop as the key to use in the Redux store for this field.
+
+We then use the `reduxForm` higher-order component to wrap our `SimpleForm` component, providing a unique identifier (`form: 'simple'`) for this form. This creates a Redux-form-connected component that can be used in our application to manage form state.
+
+You can then render the `SimpleForm` component in your application and handle form submission using the Redux store to manage form state.
