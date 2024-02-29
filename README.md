@@ -258,4 +258,27 @@ JWTs are often used in authentication mechanisms. When a user logs in, the serve
 
 - login page is going to be created and it will work with backend and integrated with it.
 
+## Chapter 10
 
+- JWT Auth
+- JWT (JSON Web Token) authentication is a method of securing web APIs by generating and verifying tokens. JWTs are encoded JSON objects that contain information (claims) about the user and are signed to ensure their integrity. They are commonly used for stateless authentication in web applications.
+
+Here's how JWT authentication works:
+
+1. **Token Generation (Authentication)**:
+   - When a user logs in or authenticates, the server generates a JWT containing a set of claims (e.g., user ID, username, roles).
+   - The JWT is signed using a secret key known only to the server, ensuring that the token is not tampered with.
+
+2. **Token Transmission**:
+   - The JWT is typically sent back to the client (e.g., browser) as part of the authentication process.
+   - It can be stored in local storage, session storage, or cookies for later use.
+
+3. **Token Verification (Authorization)**:
+   - When the client makes a request to a protected API endpoint, it includes the JWT in the request (e.g., in the Authorization header).
+   - The server verifies the JWT's signature using the secret key. If the signature is valid, the server extracts the claims from the JWT.
+
+4. **Access Control**:
+   - The server uses the extracted claims to determine whether the user is authorized to access the requested resource.
+   - If the user is authorized, the server processes the request; otherwise, it returns an error response.
+
+JWT authentication is stateless, meaning that the server does not need to store session information for each user. This makes it scalable and suitable for use in microservices architectures. However, it also means that JWTs cannot be invalidated or revoked once issued, so they should have a relatively short expiration time to limit potential misuse.
